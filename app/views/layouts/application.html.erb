@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Selpetroenergy</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="home" data-spy="scroll" data-target=".documentation-nav">
+    <div class="container">
+        <div class="row">
+
+            <!-- .................................... $header .................................... -->
+            <header class="span3">
+                <div class="affix">
+                    <div class="navbar span3">
+                        <div class="navbar-inner">
+                            <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+                                <i class="icon-reorder"></i>
+                            </a>
+                            <a class="brand span2" href="index.php.html">
+                                <%= image_tag "xlogo.png"%>
+                            </a>
+                            <nav class="nav-collapse collapse">
+                                <ul class="nav">
+                                    <li class="nav-home"><%= link_to "Home", static_pages_index_path %></li>
+                                    <li class="nav-about"><%= link_to "About", static_pages_about_path %></li>
+                                    <li class="nav-services"><%= link_to "Services", static_pages_services_path %></li>
+                                    <li class="nav-contact"><%= link_to "Pricing", static_pages_pricing_path %></li>
+                                    <li class="nav-galery"><%= link_to "Galery", static_pages_galery_path %></li>
+                                    <li class="nav-contact"><%= link_to "Contact", static_pages_contact_path %></li>
+                                    <li class="nav-contact"><%= link_to "Video", static_pages_video_path %></li>
+                                    <li class="nav-contact"><%= link_to "News", static_pages_news_path %></li>
+                                </ul>
+                            </nav>
+                        </div><!-- /navbar-inner -->
+                    </div><!-- /navbar -->
+                    <aside class="span3 text-center hidden-phone">
+                        <ul class="social inline">
+                            <li><a class="btn btn-small" href="index.php.html#"><i class="icon-facebook"></i></a></li>
+                            <li><a class="btn btn-small" href="index.php.html#"><i class="icon-twitter"></i></a></li>
+                            <li><a class="btn btn-small" href="index.php.html#"><i class="icon-linkedin"></i></a></li>
+                        </ul>
+                        <p>Designed by <a href="http://sandinurahmat.com">Sandi Nurahmat</a></p>
+                    </aside>
+                </div><!-- /affix -->
+            </header>
+            <%= yield %>
+
+        </div><!-- /row -->
+    </div><!-- /container -->
+
+    <!-- .................................... $scripts .................................... -->
+    <%= javascript_include_tag "libs/jquery.min" %>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <%= javascript_include_tag "libs/jquery.ui.map.min" %>
+    <%= javascript_include_tag "bootstrap.min" %>
+    <%= javascript_include_tag "libs/jquery.fancybox.min" %>
+    <%= javascript_include_tag "libs/jquery.hoverdir.min" %>
+    <%= javascript_include_tag "libs/jquery.isotope.min" %>
+    <%= javascript_include_tag "libs/jquery.masonry.min" %>
+    <%= javascript_include_tag "libs/jquery.fitvids.min" %>
+    <%= javascript_include_tag "libs/jquery.flexslider.min" %>
+    <script>//<![CDATA[
+(function(c,q){var m="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";c.fn.imagesLoaded=function(f){function n(){var b=c(j),a=c(h);d&&(h.length?d.reject(e,b,a):d.resolve(e));c.isFunction(f)&&f.call(g,e,b,a)}function p(b){k(b.target,"error"===b.type)}function k(b,a){b.src===m||-1!==c.inArray(b,l)||(l.push(b),a?h.push(b):j.push(b),c.data(b,"imagesLoaded",{isBroken:a,src:b.src}),r&&d.notifyWith(c(b),[a,e,c(j),c(h)]),e.length===l.length&&(setTimeout(n),e.unbind(".imagesLoaded",p)))}var g=this,d=c.isFunction(c.Deferred)?c.Deferred():0,r=c.isFunction(d.notify),e=g.find("img").add(g.filter("img")),l=[],j=[],h=[];c.isPlainObject(f)&&c.each(f,function(b,a){if("callback"===b)f=a;else if(d)d[b](a)});e.length?e.bind("load.imagesLoaded error.imagesLoaded",p).each(function(b,a){var d=a.src,e=c.data(a,"imagesLoaded");if(e&&e.src===d)k(a,e.isBroken);else if(a.complete&&a.naturalWidth!==q)k(a,0===a.naturalWidth||0===a.naturalHeight);else if(a.readyState||a.complete)a.src=m,a.src=d}):n();return d?d.promise(g):g}})(jQuery);
+//]]></script>
+    <script>//<![CDATA[
+var cbpBGSlideshow=(function(){var l=$("#cbp-bislideshow"),g=l.children("li"),n=g.length,f=$("#cbp-bicontrols"),c={$navPrev:f.find("span.cbp-biprev"),$navNext:f.find("span.cbp-binext"),$navPlayPause:f.find("span.cbp-bipause")},h=0,e,k=true,b=3500;function m(o){l.imagesLoaded(function(){if(Modernizr.backgroundsize){g.each(function(){var p=$(this);p.css("background-image","url("+p.find("img").attr("src")+")")})}else{l.find("img").show()}g.eq(h).css("opacity",1);j();a()})}function j(){c.$navPlayPause.on("click",function(){var o=$(this);if(o.hasClass("cbp-biplay")){o.removeClass("cbp-biplay").addClass("cbp-bipause");a()}else{o.removeClass("cbp-bipause").addClass("cbp-biplay");i()}});c.$navPrev.on("click",function(){d("prev");if(k){a()}});c.$navNext.on("click",function(){d("next");if(k){a()}})}function d(q){var p=g.eq(h);if(q==="next"){h=h<n-1?++h:0}else{if(q==="prev"){h=h>0?--h:n-1}}var o=g.eq(h);p.css("opacity",0);o.css("opacity",1)}function a(){k=true;clearTimeout(e);e=setTimeout(function(){d("next");a()},b)}function i(){k=false;clearTimeout(e)}return{init:m}})();
+//]]></script>
+    
+    <%= javascript_include_tag "script.js" %>
+</body>
+</html>
